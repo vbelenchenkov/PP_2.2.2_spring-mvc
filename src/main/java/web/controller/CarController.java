@@ -10,21 +10,16 @@ import web.service.CarService;
 
 import java.util.List;
 
-
 @Controller
 public class CarController {
 
     private final CarService carService;
-
-
     public CarController(CarService carService) {
-
         this.carService = carService;
     }
 
     @GetMapping("/cars")
     public String showCars(@RequestParam(value = "count", required = false)Integer count, Model model) {
-
         List<Car> cars = carService.getCars(count);
         model.addAttribute("cars", cars);
         return "cars";
